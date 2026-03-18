@@ -1,7 +1,10 @@
-from albumentations import DualIAATransform, to_tuple
+# from albumentations import DualIAATransform, to_tuple
+from albumentations.core.transforms_interface import DualTransform
+from albumentations.core.utils import to_tuple
+
 import imgaug.augmenters as iaa
 
-class IAAAffine2(DualIAATransform):
+class IAAAffine2(DualTransform):
     """Place a regular grid of points on the input and randomly move the neighbourhood of these point around
     via affine transformations.
 
@@ -54,7 +57,7 @@ class IAAAffine2(DualIAATransform):
         return ("scale", "translate_percent", "translate_px", "rotate", "shear", "order", "cval", "mode")
 
 
-class IAAPerspective2(DualIAATransform):
+class IAAPerspective2(DualTransform):
     """Perform a random four point perspective transform of the input.
 
     Note: This class introduce interpolation artifacts to mask if it has values other than {0;1}

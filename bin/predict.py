@@ -11,6 +11,12 @@ import os
 import sys
 import traceback
 
+from pathlib import Path
+
+folder = Path(__file__).absolute()
+sys.path.append(str(folder.parent))
+sys.path.append(str(folder.parent.parent))
+
 from saicinpainting.evaluation.utils import move_to_device
 from saicinpainting.evaluation.refinement import refine_predict
 os.environ['OMP_NUM_THREADS'] = '1'
